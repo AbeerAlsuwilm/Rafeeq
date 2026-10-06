@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رفيق</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button class="menu"
+onclick="document.querySelector('aside').classList.toggle('open')"
+aria-label="القائمة">
+☰
+</button>
+<aside>
+  <div class="logo">
+    <i>☾</i>
+    <div>
+      <b>رفيق</b>
+      <small id="logoSub">رفيقك نحو التدرج والاعتدال</small>
+    </div>
+  </div>
+  <nav id="nav"></nav>
+  <div class="lang" onclick="go('settings')">
+    🌐 <span id="sideLang">العربية</span>
+  </div>
+</aside>
+<main id="m"></main>
+<div class="toast" id="t"></div>
+
+<!-- Login (inside the site, no separate page) -->
+<div class="overlay" id="auth">
+  <form class="auth-card" onsubmit="submitAuth(event)">
+    <div class="auth-logo"><em data-ico="moon" data-size="26"></em></div>
+    <h1>رفيق</h1>
+    <p class="auth-sub">رفيقك نحو التدرج والاعتدال</p>
+
+    <div class="auth-tabs">
+      <button type="button" id="tabLogin" class="on" onclick="setAuthMode('login')">تسجيل الدخول</button>
+      <button type="button" id="tabSignup" onclick="setAuthMode('signup')">إنشاء حساب</button>
+    </div>
+
+    <label class="auth-field">
+      <span class="auth-ico"><em data-ico="mail" data-size="18"></em></span>
+      <input type="email" id="authEmail" placeholder="البريد الإلكتروني" autocomplete="email" dir="ltr">
+    </label>
+
+    <label class="auth-field">
+      <span class="auth-ico"><em data-ico="lock" data-size="18"></em></span>
+      <input type="password" id="authPassword" placeholder="كلمة المرور" autocomplete="current-password" dir="ltr">
+      <button type="button" class="auth-eye" id="eyeBtn" onclick="togglePassword()" aria-label="إظهار كلمة المرور"><em data-ico="eye" data-size="18"></em></button>
+    </label>
+
+    <button type="submit" class="btn auth-btn" id="authSubmit">تسجيل الدخول</button>
+    <p class="auth-msg" id="authMsg"></p>
+  </form>
+</div>
+
+<!-- Ask for the name on first entry -->
+<div class="overlay hide" id="nameModal">
+  <form class="auth-card" onsubmit="saveName(event)">
+    <div class="auth-logo"><em data-ico="user" data-size="26"></em></div>
+    <h1>أهلاً بك في رفيق</h1>
+    <p class="auth-sub">وش تحب نناديك؟</p>
+
+    <label class="auth-field">
+      <span class="auth-ico"><em data-ico="user" data-size="18"></em></span>
+      <input type="text" id="nameInput" placeholder="اكتب اسمك" maxlength="40" autocomplete="given-name">
+    </label>
+
+    <button type="submit" class="btn auth-btn" id="nameSubmit">متابعة</button>
+    <p class="auth-msg" id="nameMsg"></p>
+  </form>
+</div>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<!-- Rafeeq -->
+<script src="icons.js"></script>
+<script src="logs-sync.js"></script>
+<script src="features.js"></script>
+<script src="calendar.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
